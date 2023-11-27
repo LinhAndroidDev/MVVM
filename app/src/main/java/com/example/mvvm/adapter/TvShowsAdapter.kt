@@ -6,14 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.mvvm.databinding.ItemTvShowsBinding
 import com.example.mvvm.model.TvShowItem
 
 class TvShowsAdapter : RecyclerView.Adapter<TvShowsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(val binding: ItemTvShowsBinding): RecyclerView.ViewHolder(binding.root) {
-
-    }
+    inner class ViewHolder(val binding: ItemTvShowsBinding): RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<TvShowItem>(){
         override fun areItemsTheSame(oldItem: TvShowItem, newItem: TvShowItem): Boolean {
@@ -37,13 +36,15 @@ class TvShowsAdapter : RecyclerView.Adapter<TvShowsAdapter.ViewHolder>() {
         return ViewHolder(ItemTvShowsBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
-    override fun getItemCount(): Int {
-        return tvShows.size
-    }
+    override fun getItemCount(): Int = tvShows.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.apply {
-            
+            txt.text = tvShows[position].name
+            img.load(tvShows[position].image.original) {
+                crossfade(true)
+                crossfade(1000)
+            }
         }
     }
 }
