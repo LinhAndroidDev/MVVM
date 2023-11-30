@@ -25,18 +25,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpRv() {
-        tvShowsAdapter = TvShowsAdapter()
-
-        binding.rcv.apply {
-            adapter = tvShowsAdapter
-            layoutManager = LinearLayoutManager(
-                this@MainActivity, GridLayoutManager.HORIZONTAL,
-                false
-            )
-        }
 
         viewModel.responseTvShow.observe(this) { listTvShows ->
-            tvShowsAdapter.tvShows = listTvShows
+            tvShowsAdapter = TvShowsAdapter(listTvShows, this@MainActivity)
+            binding.rcv.apply {
+                adapter = tvShowsAdapter
+                layoutManager = LinearLayoutManager(
+                    this@MainActivity, LinearLayoutManager.HORIZONTAL,
+                    false
+                )
+            }
         }
     }
 }

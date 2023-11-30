@@ -4,7 +4,7 @@
     android:layout_height="250dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     app:cardCornerRadius="5dp">
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:text="TextView"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
     </LinearLayout>
 
